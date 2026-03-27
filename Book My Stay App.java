@@ -1,3 +1,4 @@
+
 abstract class Room {
     private int beds;
     private double price;
