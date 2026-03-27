@@ -1,20 +1,79 @@
-public class UseCase1HotelBookingApp {
+abstract class Room {
+    private int beds;
+    private double price;
+    private String type;
+
+    // Constructor
+    public Room(String type, int beds, double price) {
+        this.type = type;
+        this.beds = beds;
+        this.price = price;
+    }
+
+    // Method to display room details
+    public void displayDetails() {
+        System.out.println("Room Type : " + type);
+        System.out.println("Beds      : " + beds);
+        System.out.println("Price     : ₹" + price);
+    }
+}
+
+// Single Room Class
+class SingleRoom extends Room {
+    public SingleRoom() {
+        super("Single Room", 1, 2000);
+    }
+}
+
+// Double Room Class
+class DoubleRoom extends Room {
+    public DoubleRoom() {
+        super("Double Room", 2, 3500);
+    }
+}
+
+// Suite Room Class
+class SuiteRoom extends Room {
+    public SuiteRoom() {
+        super("Suite Room", 3, 6000);
+    }
+}
+
+// Main Class
+public class UseCase2RoomInitialization {
 
     /**
-     * Main method - Entry point of the Java application
-     * 
-     * @param args Command-line arguments
+     * Main method - Entry point
      */
     public static void main(String[] args) {
 
-        // Display welcome message
         System.out.println("=====================================");
         System.out.println("   Welcome to Book My Stay App");
-        System.out.println("   Hotel Booking System v1.0");
-        System.out.println("=====================================");
-        System.out.println("Application started successfully!");
-        
-        // End message
-        System.out.println("Thank you for using our application.");
+        System.out.println("   Hotel Booking System v2.1");
+        System.out.println("=====================================\n");
+
+        // Create Room objects (Polymorphism)
+        Room single = new SingleRoom();
+        Room doubleRoom = new DoubleRoom();
+        Room suite = new SuiteRoom();
+
+        // Static availability variables
+        int singleAvailable = 5;
+        int doubleAvailable = 3;
+        int suiteAvailable = 2;
+
+        // Display details
+        System.out.println("---- Room Details & Availability ----\n");
+
+        single.displayDetails();
+        System.out.println("Available : " + singleAvailable + "\n");
+
+        doubleRoom.displayDetails();
+        System.out.println("Available : " + doubleAvailable + "\n");
+
+        suite.displayDetails();
+        System.out.println("Available : " + suiteAvailable + "\n");
+
+        System.out.println("Application terminated successfully.");
     }
 }
